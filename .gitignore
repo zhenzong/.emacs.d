@@ -3,3 +3,14 @@
 
 # Packaging
 .cask
+
+# backup file
+*~
+
+# elpa
+elpa/
+
+#auto save
+auto-save-list/
+
+ac-comphist.dat
