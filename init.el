@@ -4,7 +4,7 @@
   (getenv
    (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 (message "Powering up... Be patient, Master %s!" current-user)
-(add-to-list 'load-path (expand-file-name "lisp"))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; install and setup useful package
 (require 'package)
