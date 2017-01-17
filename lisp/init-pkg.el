@@ -21,4 +21,7 @@
 ;; web
 (require 'init-web)
 
+;; color-theme
+;;(require 'color-theme)
+
 (provide 'init-pkg)

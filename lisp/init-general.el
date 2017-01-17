@@ -34,8 +34,7 @@
    electric-pair-mode))
 
 (disable-mode
- '(menu-bar-mode
-   scroll-bar-mode
+ '(scroll-bar-mode
    tool-bar-mode))
 
 (provide 'init-general)
