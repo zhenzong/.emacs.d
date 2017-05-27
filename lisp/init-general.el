@@ -16,6 +16,8 @@
  kept-new-versions 3
  kept-old-versions 2
  version-control t)
+(custom-set-variables
+ '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;; hook
 (add-hook 'before-save-hook 'whitespace-cleanup)

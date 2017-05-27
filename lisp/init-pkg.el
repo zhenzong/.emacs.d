@@ -18,10 +18,17 @@
 (setq auto-insert-directory template-dir)
 (add-to-list 'yas-snippet-dirs template-dir)
 
-;; web
-(require 'init-web)
+;; python
+(require 'elpy nil t)
+(elpy-enable)
 
-;; color-theme
-;;(require 'color-theme)
+;; web
+(require 'web-mode)
+(add-auto-mode 'web-mode "\\.html?\\'" "\\.[c|le]ss\\'" "\\.js[x]\\'")
+;; template setting
+(define-auto-insert "\.jsx" "jsx-template.jsx")
+(define-auto-insert "\.html" "html-template.html")
+(add-to-list 'auto-insert-alist '(("\\.jsx\\'" . "Facebook jsx") . ["jsx-template.jsx" my/auto-insert-yas-expand]))
+(add-to-list 'auto-insert-alist '(("\\.html\\'" . "html") . ["html-template.jsx" my/auto-insert-yas-expand]))
 
 (provide 'init-pkg)

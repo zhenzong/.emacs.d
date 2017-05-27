@@ -1,7 +1,11 @@
 ;; define some useful function and macro
 ;; see purcell[https://github.com/purcell/emacs.d]
 
-;; Delete the current file
+(defun add-auto-mode (mode &rest patterns)
+  "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
+  (dolist (pattern patterns)
+	(add-to-list 'auto-mode-alist (cons pattern mode))))
+
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -11,7 +15,6 @@
 	(delete-file (buffer-file-name))
 	(kill-this-buffer)))
 
-;; Rename the current file
 (defun rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")

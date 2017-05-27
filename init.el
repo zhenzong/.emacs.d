@@ -6,6 +6,12 @@
 (message "Powering up... Be patient, Master %s!" current-user)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+;; utils
+(require 'init-utils)
+
+;; general setting
+(require 'init-general)
+
 ;; install and setup useful package
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -15,19 +21,12 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
-(defvar my-packages
-  '(slime
-	auto-complete
-	web-mode
-	yasnippet))
-
-(dolist (p my-packages)
+(dolist (p
+		 '(slime
+		   auto-complete
+		   web-mode
+		   yasnippet
+		   elpy))
   (when (not (package-installed-p p))
 	(package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
-
-;; utils
-(require 'init-utils)
-
-;; general setting
-(require 'init-general)
