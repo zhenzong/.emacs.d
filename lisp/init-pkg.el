@@ -18,9 +18,12 @@
 (setq auto-insert-directory template-dir)
 (add-to-list 'yas-snippet-dirs template-dir)
 
-;; python
-(require 'elpy nil t)
-(elpy-enable)
+;; color theme
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-matrix)
+(color-theme-dark-blue2)
+(color-theme-dark-green)
 
 ;; web
 (require 'web-mode)
@@ -29,6 +32,15 @@
 (define-auto-insert "\.jsx" "jsx-template.jsx")
 (define-auto-insert "\.html" "html-template.html")
 (add-to-list 'auto-insert-alist '(("\\.jsx\\'" . "Facebook jsx") . ["jsx-template.jsx" my/auto-insert-yas-expand]))
-(add-to-list 'auto-insert-alist '(("\\.html\\'" . "html") . ["html-template.jsx" my/auto-insert-yas-expand]))
+(add-to-list 'auto-insert-alist '(("\\.html\\'" . "html") . ["html-template.html" my/auto-insert-yas-expand]))
+
+;; python
+(require 'elpy nil t)
+(elpy-enable)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 (provide 'init-pkg)

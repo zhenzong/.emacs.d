@@ -18,15 +18,41 @@
 			 ("melpa" . "https://melpa.org/packages/")
 			 ("org" . "http://orgmode.org/elpa/")
 			 ("popkit" . "http://elpa.popkit.org/packages/")))
+
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 (dolist (p
 		 '(slime
 		   auto-complete
-		   web-mode
 		   yasnippet
-		   elpy))
-  (when (not (package-installed-p p))
+		   color-theme
+		   web-mode
+		   elpy
+		   flycheck
+		   py-autopep8))
+  (unless (package-installed-p p)
 	(package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ ;; 当你当电脑上安装有多个python的时候，
+ ;; 您可能需要设置以下三个变量，避免出现elpy配置问题
+ ;; 检查elpy配置使用 M-x elpy-config
+ '(python-shell-interpreter
+   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
+ '(pyvenv-virtualenvwrapper-python
+   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
+ '(elpy-rpc-python-command
+   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
+ '(safe-local-variable-values (quote ((no-byte-compile t)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
