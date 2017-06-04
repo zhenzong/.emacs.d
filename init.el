@@ -31,7 +31,8 @@
 		   elpy
 		   flycheck
 		   py-autopep8
-		   default-text-scale))
+		   default-text-scale
+		   session))
   (unless (package-installed-p p)
 	(package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))

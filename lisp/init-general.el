@@ -17,9 +17,15 @@
  kept-new-versions 3
  kept-old-versions 2
  version-control t)
+(setq
+ desktop-path (list user-emacs-directory)
+ desktop-auto-save-timeout 600)
 
 ;; hook
 (add-hook 'before-save-hook 'whitespace-cleanup)
+;; 不知道为什么我设置（desktop-save-mode）启动时不自动加载
+;; 启动后调用(desktop-read)
+(add-hook 'window-setup-hook 'desktop-read)
 
 ;; enable and disable some mode
 (enable-mode
@@ -33,7 +39,8 @@
    semantic-mode
    electric-indent-mode
    electric-pair-mode
-   subword-mode))
+   subword-mode
+   desktop-save-mode))
 
 (disable-mode
  '(scroll-bar-mode

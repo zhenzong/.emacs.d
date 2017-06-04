@@ -18,3 +18,5 @@ ac-comphist.dat
 semanticdb/
 
 url/
+
+.emacs.desktop*
