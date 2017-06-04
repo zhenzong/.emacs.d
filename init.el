@@ -30,7 +30,8 @@
 		   web-mode
 		   elpy
 		   flycheck
-		   py-autopep8))
+		   py-autopep8
+		   default-text-scale))
   (unless (package-installed-p p)
 	(package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
