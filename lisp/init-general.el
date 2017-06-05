@@ -25,7 +25,7 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; 不知道为什么我设置（desktop-save-mode）启动时不自动加载
 ;; 启动后调用(desktop-read)
-(add-hook 'window-setup-hook 'desktop-read)
+;; (add-hook 'window-setup-hook 'desktop-read)
 
 ;; enable and disable some mode
 (enable-mode
