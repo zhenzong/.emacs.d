@@ -6,6 +6,9 @@
 (message "Powering up... Be patient, Master %s!" current-user)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+;; variables
+(require 'init-constants)
+
 ;; utils
 (require 'init-utils)
 
@@ -45,12 +48,9 @@
  ;; 当你当电脑上安装有多个python的时候，
  ;; 您可能需要设置以下三个变量，避免出现elpy配置问题
  ;; 检查elpy配置使用 M-x elpy-config
- '(python-shell-interpreter
-   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
- '(pyvenv-virtualenvwrapper-python
-   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
- '(elpy-rpc-python-command
-   "/Library/Frameworks/Python.framework/Versions/3.6/bin/python3")
+ '(python-shell-interpreter PYTHON-PATH)
+ '(pyvenv-virtualenvwrapper-python PYTHON-PATH)
+ '(elpy-rpc-python-command PYTHON-PATH)
  '(safe-local-variable-values (quote ((no-byte-compile t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

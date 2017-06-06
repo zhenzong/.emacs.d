@@ -1,5 +1,5 @@
 ;; slime
-(setq inferior-lisp-program "~/Workspace/Repository/svn/ccl/dx86cl64")
+(setq inferior-lisp-program LISP-PROGRAM-PATH)
 (require 'slime-autoloads)
 
 ;; auto-complete
@@ -42,6 +42,9 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; 不知道默认的为什么不管用，自己重新绑定
+;; 好像lisp mode里M-*也不管用
+(define-key elpy-mode-map (kbd "M-*") 'pop-tag-mark)
 
 ;; text and font
 (require 'default-text-scale)

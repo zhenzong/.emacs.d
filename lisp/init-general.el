@@ -12,7 +12,7 @@
 (set-default 'show-trailing-whitespace t)
 (set-default 'inhibit-startup-screen t)
 (setq
- backup-directory-alist '(("." . "~/.backups"))
+ backup-directory-alist `(("." . ,BACKUP-DIR))
  delete-old-versions t
  kept-new-versions 3
  kept-old-versions 2
