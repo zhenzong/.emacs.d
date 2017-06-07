@@ -45,10 +45,37 @@
 ;; 不知道默认的为什么不管用，自己重新绑定
 ;; 好像lisp mode里M-*也不管用
 (define-key elpy-mode-map (kbd "M-*") 'pop-tag-mark)
+;; see: https://www.emacswiki.org/emacs/Elpy
+(defun company-yasnippet-or-completion ()
+  "Solve company yasnippet conflicts."
+  (interactive)
+  (let ((yas-fallback-behavior
+		 (apply 'company-complete-common nil)))
+	(yas-expand)))
+(add-hook 'company-mode-hook
+		  (lambda ()
+			(substitute-key-definition
+			 'company-complete-common
+			 'company-yasnippet-or-completion
+			 company-active-map)))
+;; see: https://github.com/jorgenschaefer/elpy/issues/887
+(with-eval-after-load 'python
+  (defun python-shell-completion-native-try ()
+	"Return non-nil if can trigger native completion."
+	(let ((python-shell-completion-native-enable t)
+		  (python-shell-completion-native-output-timeout
+		   python-shell-completion-native-try-output-timeout))
+	  (python-shell-completion-native-get-completions
+	   (get-buffer-process (current-buffer))
+	   nil "_"))))
 
 ;; text and font
 (require 'default-text-scale)
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+
+;; magit
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (provide 'init-pkg)

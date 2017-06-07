@@ -25,6 +25,7 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; 不知道为什么我设置（desktop-save-mode）启动时不自动加载
 ;; 启动后调用(desktop-read)
+;; 不知道为什么又可以使用了
 ;; (add-hook 'window-setup-hook 'desktop-read)
 
 ;; enable and disable some mode
@@ -45,5 +46,13 @@
 (disable-mode
  '(scroll-bar-mode
    tool-bar-mode))
+
+;; show file name
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name))
+  (kill-new (file-truename buffer-file-name)))
+(global-set-key (kbd "C-c f") 'show-file-name)
 
 (provide 'init-general)

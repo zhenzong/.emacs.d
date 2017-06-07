@@ -35,7 +35,7 @@
 		   flycheck
 		   py-autopep8
 		   default-text-scale
-		   session))
+		   magit))
   (unless (package-installed-p p)
 	(package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
