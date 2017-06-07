@@ -44,7 +44,7 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; 不知道默认的为什么不管用，自己重新绑定
 ;; 好像lisp mode里M-*也不管用
-(define-key elpy-mode-map (kbd "M-*") 'pop-tag-mark)
+(define-key elpy-mode-map (kbd "M-,") 'pop-tag-mark)
 ;; see: https://www.emacswiki.org/emacs/Elpy
 (defun company-yasnippet-or-completion ()
   "Solve company yasnippet conflicts."
