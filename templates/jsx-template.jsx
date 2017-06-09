@@ -1,7 +1,7 @@
 /**
  *
- * @date `(format-time-string "%A, %e %B %Y.")`
  * @author `(getenv (if (equal system-type 'windows-nt) "USERNAME" "USER")))`
+ * @date `(format-time-string "%A, %e %B %Y.")`
  *
  */
 import React from 'react';

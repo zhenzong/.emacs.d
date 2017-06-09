@@ -35,6 +35,8 @@
 (add-to-list 'auto-insert-alist '(("\\.html\\'" . "html") . ["html-template.html" my/auto-insert-yas-expand]))
 
 ;; python
+(define-auto-insert "\.py" "python-template.py")
+(add-to-list 'auto-insert-alist '(("\\.py" . "python") . ["python-template.py" my/auto-insert-yas-expand]))
 (require 'elpy nil t)
 (elpy-enable)
 (when (require 'flycheck nil t)
@@ -68,6 +70,7 @@
 	  (python-shell-completion-native-get-completions
 	   (get-buffer-process (current-buffer))
 	   nil "_"))))
+(setq python-shell-completion-native-enable nil)
 
 ;; text and font
 (require 'default-text-scale)

@@ -55,4 +55,11 @@
   (kill-new (file-truename buffer-file-name)))
 (global-set-key (kbd "C-c f") 'show-file-name)
 
+;; buffer menu
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+;; code comment
+(global-set-key (kbd "C-c c") 'comment-region)
+(global-set-key (kbd "C-c u") 'uncomment-region)
+
 (provide 'init-general)
