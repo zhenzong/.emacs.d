@@ -1,4 +1,4 @@
-(defconst PYTHON-PATH "/Library/Frameworks/Python.framework/Versions/2.7/bin/python"
+(defconst PYTHON-PATH "/usr/local/bin/python"
   "Define python path")
 (defconst BACKUP-DIR "~/.backups"
   "Define backup directory")

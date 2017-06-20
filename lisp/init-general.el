@@ -7,7 +7,7 @@
 
 ;; variable
 (fset 'yes-or-no-p 'y-or-n-p)
-(set-default 'tab-width 4)
+(set-default 'indent-tabs-mode nil)
 (set-default 'kill-whole-line t)
 (set-default 'show-trailing-whitespace t)
 (set-default 'inhibit-startup-screen t)

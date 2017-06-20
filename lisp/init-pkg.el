@@ -47,7 +47,7 @@
 ;; 不知道默认的为什么不管用，自己重新绑定
 ;; 好像lisp mode里M-*也不管用
 (define-key elpy-mode-map (kbd "M-,") 'pop-tag-mark)
-;; see: https://www.emacswiki.org/emacs/Elpy
+;; see: https://github.com/jorgenschaefer/elpy/wiki/FAQ#q-how-to-solve-company-yasnippet-conflicts
 (defun company-yasnippet-or-completion ()
   "Solve company yasnippet conflicts."
   (interactive)
