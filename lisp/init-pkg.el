@@ -37,6 +37,10 @@
 
 ;; python
 (define-auto-insert "\.py" "python-template.py")
+;;; 为了解决C-c C-z打开Python REPL没有正确路径的问题，但是似乎不管用
+(setenv "PYTHONPATH" PYTHONPATH)
+;;; 为了解决elpy-config找不到Syntax Checker没有发现flake8的问题，但是似乎不管用
+(setq python-check-command "flake8")
 (add-to-list 'auto-insert-alist '(("\\.py" . "python") . ["python-template.py" my/auto-insert-yas-expand]))
 (require 'elpy nil t)
 (elpy-enable)
@@ -46,7 +50,7 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; 不知道默认的为什么不管用，自己重新绑定
-;; 好像lisp mode里M-*也不管用
+;; 好像lisp mode里M-,也不管用
 (define-key elpy-mode-map (kbd "M-,") 'pop-tag-mark)
 ;; see: https://github.com/jorgenschaefer/elpy/wiki/FAQ#q-how-to-solve-company-yasnippet-conflicts
 (defun company-yasnippet-or-completion ()

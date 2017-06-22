@@ -18,26 +18,26 @@
 ;; install and setup useful package
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")
-			 ("org" . "http://orgmode.org/elpa/")
-			 ("popkit" . "http://elpa.popkit.org/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/")
+                         ("popkit" . "http://elpa.popkit.org/packages/")))
 
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 (dolist (p
-		 '(slime
-		   auto-complete
-		   yasnippet
-		   color-theme
-		   web-mode
-		   elpy
-		   flycheck
-		   py-autopep8
-		   default-text-scale
-		   magit))
+                 '(slime
+                   auto-complete
+                   yasnippet
+                   color-theme
+                   web-mode
+                   elpy
+                   flycheck
+                   py-autopep8
+                   default-text-scale
+                   magit))
   (unless (package-installed-p p)
-	(package-install p)))
+        (package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -48,10 +48,11 @@
  ;; 当你当电脑上安装有多个python的时候，
  ;; 您可能需要设置以下三个变量，避免出现elpy配置问题
  ;; 检查elpy配置使用 M-x elpy-config
- '(python-shell-interpreter PYTHON-PATH)
- '(pyvenv-virtualenvwrapper-python PYTHON-PATH)
- '(elpy-rpc-python-command PYTHON-PATH)
- '(safe-local-variable-values (quote ((no-byte-compile t)))))
+ '(python-shell-interpreter PYTHON)
+ '(pyvenv-virtualenvwrapper-python PYTHON)
+ '(elpy-rpc-python-command PYTHON)
+ '(safe-local-variable-values (quote ((no-byte-compile t))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
