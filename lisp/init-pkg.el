@@ -22,8 +22,9 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-matrix)
-(color-theme-dark-blue2)
-(color-theme-dark-green)
+(color-theme-subtle-hacker)
+;;(color-theme-dark-blue2)
+;;(color-theme-dark-green)
 
 ;; web
 (require 'web-mode)
