@@ -52,30 +52,40 @@
   "Solve company yasnippet conflicts."
   (interactive)
   (let ((yas-fallback-behavior
-		 (apply 'company-complete-common nil)))
-	(yas-expand)))
+         (apply 'company-complete-common nil)))
+    (yas-expand)))
 (add-hook 'company-mode-hook
-		  (lambda ()
-			(substitute-key-definition
-			 'company-complete-common
-			 'company-yasnippet-or-completion
-			 company-active-map)))
+          (lambda ()
+            (substitute-key-definition
+             'company-complete-common
+             'company-yasnippet-or-completion
+             company-active-map)))
 ;; see: https://github.com/jorgenschaefer/elpy/issues/887
 (with-eval-after-load 'python
   (defun python-shell-completion-native-try ()
-	"Return non-nil if can trigger native completion."
-	(let ((python-shell-completion-native-enable t)
-		  (python-shell-completion-native-output-timeout
-		   python-shell-completion-native-try-output-timeout))
-	  (python-shell-completion-native-get-completions
-	   (get-buffer-process (current-buffer))
-	   nil "_"))))
+    "Return non-nil if can trigger native completion."
+    (let ((python-shell-completion-native-enable t)
+          (python-shell-completion-native-output-timeout
+           python-shell-completion-native-try-output-timeout))
+      (python-shell-completion-native-get-completions
+       (get-buffer-process (current-buffer))
+       nil "_"))))
 (setq python-shell-completion-native-enable nil)
 
 ;; text and font
 (require 'default-text-scale)
 (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
 (global-set-key (kbd "C-M--") 'default-text-scale-decrease)
+
+;; org
+;;; Global set #+OPTIONS: ^:nil
+(setq-default org-use-sub-superscripts nil)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (set-face-attribute 'org-level-1 nil :height 1.3)
+            (set-face-attribute 'org-level-2 nil :height 1.3)
+            (set-face-attribute 'org-level-3 nil :height 1.3)
+            (set-face-attribute 'org-level-4 nil :height 1.3)))
 
 ;; magit
 (require 'magit)
