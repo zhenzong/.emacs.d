@@ -1,3 +1,10 @@
+;; exec-path-from-shell
+;; see: https://github.com/purcell/exec-path-from-shell
+;; see: http://blog.galeo.me/path-environment-variable-on-mac-os-x-emacs-app.html
+(require 'exec-path-from-shell)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; slime
 (setq inferior-lisp-program LISP-PROGRAM-PATH)
 (require 'slime-autoloads)
@@ -37,10 +44,9 @@
 
 ;; python
 (define-auto-insert "\.py" "python-template.py")
-;;; 为了解决C-c C-z打开Python REPL没有正确路径的问题，但是似乎不管用
-(setenv "PYTHONPATH" PYTHONPATH)
-;;; 为了解决elpy-config找不到Syntax Checker没有发现flake8的问题，但是似乎不管用
-(setq python-check-command "flake8")
+;;; 设置PYTHONPATH变量解决C-c C-z打开Python REPL没有正确路径的问题
+;;; 设置PATH变量解决elpy-config中Syntax Checker没有发现flake8的问题
+(exec-path-from-shell-copy-env "PYTHONPATH")
 (add-to-list 'auto-insert-alist '(("\\.py" . "python") . ["python-template.py" my/auto-insert-yas-expand]))
 (require 'elpy nil t)
 (elpy-enable)
