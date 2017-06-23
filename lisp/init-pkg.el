@@ -54,7 +54,8 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 (require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; 有时候啊，项目不是你一个人在开发的时候，为了不修改别人的，还是把这个关掉把
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; 不知道默认的为什么不管用，自己重新绑定
 ;; 好像lisp mode里M-,也不管用
 (define-key elpy-mode-map (kbd "M-,") 'pop-tag-mark)
