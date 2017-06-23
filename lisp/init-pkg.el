@@ -93,10 +93,10 @@
 (setq-default org-use-sub-superscripts nil)
 (add-hook 'org-mode-hook
           (lambda ()
-            (set-face-attribute 'org-level-1 nil :height 1.3)
-            (set-face-attribute 'org-level-2 nil :height 1.3)
-            (set-face-attribute 'org-level-3 nil :height 1.3)
-            (set-face-attribute 'org-level-4 nil :height 1.3)))
+            (set-face-attribute 'org-level-1 nil :height 1.2)
+            (set-face-attribute 'org-level-2 nil :height 1.2)
+            (set-face-attribute 'org-level-3 nil :height 1.2)
+            (set-face-attribute 'org-level-4 nil :height 1.2)))
 
 ;; magit
 (require 'magit)
