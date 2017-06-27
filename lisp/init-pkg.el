@@ -24,6 +24,7 @@
 (setq auto-insert-query nil)
 (setq auto-insert-directory template-dir)
 (add-to-list 'yas-snippet-dirs template-dir)
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
 
 ;; color theme
 (require 'color-theme)
