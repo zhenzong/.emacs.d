@@ -38,17 +38,17 @@
 (require 'web-mode)
 (add-auto-mode 'web-mode "\\.html?\\'" "\\.[c|le]ss\\'" "\\.js[x]\\'")
 ;; template setting
-(define-auto-insert "\.jsx" "jsx-template.jsx")
-(define-auto-insert "\.html" "html-template.html")
-(add-to-list 'auto-insert-alist '(("\\.jsx\\'" . "Facebook jsx") . ["jsx-template.jsx" my/auto-insert-yas-expand]))
-(add-to-list 'auto-insert-alist '(("\\.html\\'" . "html") . ["html-template.html" my/auto-insert-yas-expand]))
+(define-auto-insert "\.jsx" ["jsx-template.jsx" my/auto-insert-yas-expand])
+(define-auto-insert "\.html" ["html-template.html" my/auto-insert-yas-expand])
 
 ;; python
-(define-auto-insert "\.py" "python-template.py")
+(define-auto-insert "test_.*\.py" ["test-python-template.py" my/auto-insert-yas-expand])
+(define-auto-insert ".*_test\.py" ["test-python-template.py" my/auto-insert-yas-expand])
+(define-auto-insert "__init__\.py" ["init-python-template.py" my/auto-insert-yas-expand])
+(define-auto-insert "\.py" ["python-template.py" my/auto-insert-yas-expand] t)
 ;;; 设置PYTHONPATH变量解决C-c C-z打开Python REPL没有正确路径的问题
 ;;; 设置PATH变量解决elpy-config中Syntax Checker没有发现flake8的问题
 (exec-path-from-shell-copy-env "PYTHONPATH")
-(add-to-list 'auto-insert-alist '(("\\.py" . "python") . ["python-template.py" my/auto-insert-yas-expand]))
 (require 'elpy nil t)
 (elpy-enable)
 (when (require 'flycheck nil t)
@@ -57,9 +57,6 @@
 (require 'py-autopep8)
 ;; 有时候啊，项目不是你一个人在开发的时候，为了不修改别人的，还是把这个关掉把
 ;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-;; 不知道默认的为什么不管用，自己重新绑定
-;; 好像lisp mode里M-,也不管用
-(define-key elpy-mode-map (kbd "M-,") 'pop-tag-mark)
 ;; see: https://github.com/jorgenschaefer/elpy/wiki/FAQ#q-how-to-solve-company-yasnippet-conflicts
 (defun company-yasnippet-or-completion ()
   "Solve company yasnippet conflicts."

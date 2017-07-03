@@ -6,7 +6,7 @@
  */
 import React from 'react';
 
-var ${1:`(let ((name (file-name-nondirectory (buffer-file-name))))(substring name 0 (- (length name) 4)))`$(capitalize yas-text)} = React.createClass({
+var ${1:`(file-name-base)`$(capitalize yas/text)} = React.createClass({
 
         render: function() {
                         $2
