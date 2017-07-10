@@ -25,6 +25,7 @@
 (setq auto-insert-directory template-dir)
 (add-to-list 'yas-snippet-dirs template-dir)
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets")
+(define-key yas-minor-mode-map (kbd "C-c C-i") 'yas-insert-snippet)
 
 ;; color theme
 (require 'color-theme)
