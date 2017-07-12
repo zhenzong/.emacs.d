@@ -36,7 +36,8 @@
            py-autopep8
            default-text-scale
            magit
-           exec-path-from-shell))
+           exec-path-from-shell
+           neotree))
   (unless (package-installed-p p)
         (package-install p)))
 (add-hook 'after-init-hook (lambda () (require 'init-pkg)))
