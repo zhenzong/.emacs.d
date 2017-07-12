@@ -1,14 +1,12 @@
 # coding: utf-8
 # @author `(getenv (if (equal system-type 'windows-nt) "USERNAME" "USER")))`
 # @date `(format-time-string "%A, %e %B %Y.")`
-
 import unittest
 from unittest import TestCase
 
 
 class ${1:`(get-test-file-name)`$(capitalize yas/text)}Test(TestCase):
-    """
-    Documentation for $1Test
+    """Documentation for $1Test
     """
 
     def setUp(self):
