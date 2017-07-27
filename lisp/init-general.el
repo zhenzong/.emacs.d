@@ -57,6 +57,21 @@
 
 ;; buffer menu
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
+(defun sort-buffers ()
+  "Put the buffer list in alphabetical order."
+  (interactive)
+  (dolist (buff (buffer-list-sorted)) (bury-buffer buff))
+  (when (interactive-p) (list-buffers)))
+(defun buffer-list-sorted ()
+  (sort (buffer-list)
+        (function
+         (lambda (a b)
+           (let ((name-a (downcase (buffer-name a)))
+                 (name-b (downcase (buffer-name b))))
+             (cond ((string-prefix-p "*" name-a) -1)
+                   ((string-prefix-p "*" name-b) 1)
+                   (t (string< name-a name-b))))))))
+(global-set-key (kbd "C-c C-s") 'sort-buffers)
 
 ;; code comment
 (global-set-key (kbd "C-c c") 'comment-region)
