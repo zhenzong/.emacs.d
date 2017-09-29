@@ -43,9 +43,6 @@
 (define-auto-insert "\.html" ["html-template.html" my/auto-insert-yas-expand])
 
 ;; python
-(define-auto-insert "test_.*\.py" ["test-python-template.py" my/auto-insert-yas-expand])
-(define-auto-insert ".*_test\.py" ["test-python-template.py" my/auto-insert-yas-expand])
-(define-auto-insert "__init__\.py" ["init-python-template.py" my/auto-insert-yas-expand])
 (define-auto-insert "\.py" ["python-template.py" my/auto-insert-yas-expand] t)
 ;;; 设置PYTHONPATH变量解决C-c C-z打开Python REPL没有正确路径的问题
 ;;; 设置PATH变量解决elpy-config中Syntax Checker没有发现flake8的问题
@@ -91,12 +88,6 @@
 ;; org
 ;;; Global set #+OPTIONS: ^:nil
 (setq-default org-use-sub-superscripts nil)
-(add-hook 'org-mode-hook
-          (lambda ()
-            (set-face-attribute 'org-level-1 nil :height 1.2)
-            (set-face-attribute 'org-level-2 nil :height 1.2)
-            (set-face-attribute 'org-level-3 nil :height 1.2)
-            (set-face-attribute 'org-level-4 nil :height 1.2)))
 
 ;; magit
 (require 'magit)
