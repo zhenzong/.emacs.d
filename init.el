@@ -1,58 +1,47 @@
+;; -*- lexical-binding: t -*-
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(setq debug-on-error t)
+
 (when (version<= emacs-version "24")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+
 (defvar current-user
   (getenv
    (if (equal system-type 'windows-nt) "USERNAME" "USER")))
 (message "Powering up... Be patient, Master %s!" current-user)
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;; variables
-(require 'init-constants)
-
-;; utils
 (require 'init-utils)
-
-;; general setting
 (require 'init-general)
+(require 'init-elpa)
+(require 'init-exec-path)
+(require 'init-slime)
+(require 'init-ui)
+(require 'init-auto-complete)
+(require 'init-python)
+(require 'init-web)
+(require 'init-magit)
+(require 'init-neotree)
 
-;; install and setup useful package
-(require 'package)
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("org" . "http://orgmode.org/elpa/")
-                         ("popkit" . "http://elpa.popkit.org/packages/")))
-
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
-(dolist (p
-         '(slime
-           auto-complete
-           yasnippet
-           color-theme
-           web-mode
-           elpy
-           flycheck
-           py-autopep8
-           default-text-scale
-           magit
-           exec-path-from-shell
-           neotree))
-  (unless (package-installed-p p)
-        (package-install p)))
-(add-hook 'after-init-hook (lambda () (require 'init-pkg)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(elpy-rpc-python-command PYTHON-BIN-PATH)
+ '(custom-safe-themes
+   (quote
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(python-shell-interpreter PYTHON-BIN-PATH)
- '(python-shell-prompt-detect-enabled nil)
- '(python-shell-prompt-detect-failure-warning nil)
- '(pyvenv-virtualenvwrapper-python PYTHON-BIN-PATH)
- '(safe-local-variable-values (quote ((no-byte-compile t)))))
+ '(package-selected-packages
+   (quote
+    (magit yasnippet with-editor web-mode slime neotree magit-popup let-alist fullframe exec-path-from-shell dimmer default-text-scale color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

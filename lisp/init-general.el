@@ -12,7 +12,7 @@
 (set-default 'show-trailing-whitespace t)
 (set-default 'inhibit-startup-screen t)
 (setq
- backup-directory-alist `(("." . ,BACKUP-DIR))
+ backup-directory-alist `(("." . "~/.backups"))
  delete-old-versions t
  kept-new-versions 3
  kept-old-versions 2
@@ -42,10 +42,11 @@
    electric-pair-mode
    subword-mode
    desktop-save-mode))
-
 (disable-mode
- '(scroll-bar-mode
-   tool-bar-mode))
+ '(
+   ;;scroll-bar-mode
+   tool-bar-mode
+   menu-bar-mode))
 
 ;; show file name
 (defun show-file-name ()
